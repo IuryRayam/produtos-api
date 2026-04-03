@@ -15,7 +15,7 @@ public class Produto {
     @Id
     @Column(name = "id")
     private String id;
-    @Column(name = "name")
+    @Column(name = "nome")
     private String nome;
     @Column(name = "descricao")
     private String descricao;

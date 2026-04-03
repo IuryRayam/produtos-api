@@ -4,6 +4,7 @@ import com.github.iuryrayam.produtosapi.model.Produto;
 import com.github.iuryrayam.produtosapi.repository.ProdutoRepository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -35,5 +36,17 @@ public class ProdutoController {
     @DeleteMapping("{id}")
     public void deletar(@PathVariable("id") String id) {
         produtoRepository.deleteById(id);
+    }
+
+    @PutMapping("{id}")
+    public void atualizar(@PathVariable("id") String id,
+                          @RequestBody Produto produto) {
+        produto.setId(id);
+        produtoRepository.save(produto);
+    }
+
+    @GetMapping
+    public List<Produto> buscar(@RequestParam("nome") String nome) {
+        return produtoRepository.findByNome(nome);
     }
 }
